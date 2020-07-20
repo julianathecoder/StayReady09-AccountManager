@@ -1,23 +1,23 @@
 package com.codedifferently.bankaccountlab;
 
 public abstract class BankAccount {
+    protected Integer accountNumber;
+    protected Double accountFee;
+    protected Double accountBalance;
+    protected String accountName;
 
-    private int balance;
-
-
-
-
-
-
-
-
-
-    public void deposit(double depositAmount){
-        balance += depositAmount;
-
+    public BankAccount(Double initialBalance){
+        this.accountBalance = initialBalance;
     }
 
-    public void withdrawal(double withdrawAmount){
+    public abstract Integer getAccountNumber();
 
-    }
+    public abstract Double getAccountFee();
+
+    public abstract Double getAccountBalance();
+
+    public abstract void depositMoney(Double amount);
+
+    public abstract void withdrawMoney(Double amount);
+
 }

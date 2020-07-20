@@ -2,49 +2,45 @@ package com.codedifferently.bankaccountlab;
 
 public class CheckingAccount extends BankAccount {
 
-    private int accountNumber;
-    private double fees;
-    private String name;
-    private double balance;
+    private String accountOwner;
 
-
-    public CheckingAccount(int accountNumber, double fees, String name, double balance) {
-        this.accountNumber = accountNumber;
-        this.fees = fees;
-        this.name = name;
-        this.balance = balance;
+    public CheckingAccount(String accountOwner , Double initialBalance) {
+        super(initialBalance);
+        this.accountFee = 24.00;
+        this.accountOwner = accountOwner;
+        this.accountBalance = initialBalance;
     }
 
-    public int getAccountNumber() {
-        return accountNumber;
+    public String getAccountOwner(){
+        return this.accountOwner;
     }
 
-    public void setAccountNumber(int accountNumber) {
-        this.accountNumber = accountNumber;
+    public void setAccountOwner(String accountOwner){
+        this.accountOwner = accountOwner;
     }
 
-    public double getFees() {
-        return fees;
+    @Override
+    public Integer getAccountNumber() {
+        return this.accountNumber;
     }
 
-    public void setFees(double Accountfees) {
-        this.fees = fees;
+    @Override
+    public Double getAccountFee() {
+        return this.accountFee;
     }
 
-    public String getName() {
-        return name;
+    @Override
+    public Double getAccountBalance(){
+        return this.accountBalance;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    @Override
+    public void depositMoney(Double amount){
+        this.accountBalance += amount;
     }
 
-    public double getBalance() {
-        return balance;
+    @Override
+    public void withdrawMoney(Double amount) {
+        this.accountBalance -= amount;
     }
-
-    public void setBalance(double accountBalance) {
-        this.balance = accountBalance;
-    }
-
-}
+} 

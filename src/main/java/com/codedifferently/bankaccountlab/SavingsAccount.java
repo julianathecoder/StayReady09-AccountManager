@@ -1,45 +1,44 @@
 package com.codedifferently.bankaccountlab;
 
-import jdk.vm.ci.meta.Local;
+public class SavingsAccount extends BankAccount {
 
-import java.time.LocalDate;
-import java.util.Random;
+    private String accountOwner;
 
-public class SavingsAccount {
-
-    private int acctNum; //  Allows for unique identification of each account
-    private double annualFees; // Fees charged annually
-    private String name; // individual name associated with an account
-    private double rate; // Represents the annual return on savings
-    private double balance; // the current balance of the account
-    private LocalDate dateOpened; // date account was opened, so as to check when too charge annually
-
-    public SavingsAccount(int acctNum, String name, double balance, LocalDate dateOpened){
-        this.acctNum = acctNum;
-        annualFees = 50.0;
-        this.name = name;
-        rate = 1.0;
-        this.balance = balance;
-        this.dateOpened = dateOpened;
+    public SavingsAccount(String accountOwner, Double initialBalance) {
+        super(initialBalance);
+        this.accountOwner = accountOwner;
+        this.accountFee = 10.00;
+        this.accountBalance = initialBalance;
     }
 
-    public void chargeAnnualFees(){
-        if (dateOpened.equals(LocalDate.now()) && balance >= annualFees){
-            balance -= annualFees;
-        }
+    public String getAccountOwner(){
+        return this.accountOwner;
     }
 
-    public int getAcctNum(){
-        return acctNum;
+    public void setName(String accountOwner){
+        this.accountOwner = accountOwner;
     }
 
-    public String getName(){
-        return name;
+    public Integer getAccountNumber() {
+        return this.accountNumber;
     }
 
-    public double getBalance(){
-        return balance;
+    public Double getAccountFee() {
+        return this.accountFee;
     }
 
+    @Override
+    public Double getAccountBalance(){
+        return this.accountBalance;
+    }
 
+    @Override
+    public void depositMoney(Double amount){
+        this.accountBalance += amount;
+    }
+
+    @Override
+    public void withdrawMoney(Double amount) {
+        this.accountBalance -= amount;
+    }
 }
